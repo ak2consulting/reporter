@@ -84,5 +84,18 @@ Route::post('/user/create', 'UserController@doUserCreate');
 |
 */
 
-Route::get('/data/analyze/{id}', array('before'=>'auth', 'uses'=>'AnalyzeController@showFileAnalyze'))->where('id', 'all|[a-z0-9]+');
+Route::get('/data/analyze/{id}', array('before'=>'auth', 'uses'=>'AnalyzeController@showFileAnalyzeRoot'))->where('id', 'all|[a-z0-9]+');
+Route::get('/data/analyze/{fid}/{cid}', array('before'=>'auth', 'uses'=>'AnalyzeController@showFileAnalyze'));
 Route::get('/data/analyze', array('before'=>'auth', 'uses'=>'AnalyzeController@showAnalyzeRoot'));
+
+
+/*
+|--------------------------------------------------------------------------
+| API ROUTES
+|--------------------------------------------------------------------------
+|
+|
+*/
+
+Route::get('/api/v1/{apiKey}/analyze/{fid}/{cid}', array('before'=>'auth', 'uses'=>'ApiController@FileAnalyze'))->where('id', 'all|[a-z0-9]+');
+Route::post('/api/v1/{apiKey}/analyze/{fid}/{cid}', array('before'=>'auth', 'uses'=>'ApiController@FileAnalyze'))->where('id', 'all|[a-z0-9]+');

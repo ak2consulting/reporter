@@ -94,7 +94,7 @@
     	    </div>
     	</div>
 
-        <!-- Scripts are placed here -->
+        <!-- Global scripts are placed here -->
         {{ HTML::script('js/jquery.min.js') }}
         {{ HTML::script('js/bootstrap.min.js') }}
 
